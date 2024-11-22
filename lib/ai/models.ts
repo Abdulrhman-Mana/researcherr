@@ -5,21 +5,27 @@ export interface Model {
   label: string;
   apiIdentifier: string;
   description: string;
+  provider: string
+  providerId: string
 }
 
 export const models: Array<Model> = [
   {
-    id: 'gpt-4o-mini',
-    label: 'GPT 4o mini',
-    apiIdentifier: 'gpt-4o-mini',
-    description: 'Small model for fast, lightweight tasks',
+    id: 'llama-3.2-90b-vision-preview',
+    label: 'Meta',
+    apiIdentifier: 'llama-3.2-90b-vision-preview',
+    description: 'Description for GROQ Model 1',
+    provider: 'Groq',
+    providerId: 'groq'
   },
   {
-    id: 'gpt-4o',
-    label: 'GPT 4o',
-    apiIdentifier: 'gpt-4o',
-    description: 'For complex, multi-step tasks',
+    id: 'gemma2-9b-it',
+    label: 'Google',
+    apiIdentifier: 'gemma2-9b-it',
+    description: 'Description for GROQ Model 2',
+    provider: 'Groq',
+    providerId: 'groq'
   },
 ] as const;
 
-export const DEFAULT_MODEL_NAME: string = 'gpt-4o-mini';
+export const DEFAULT_MODEL_NAME: string = 'llama-3.2-90b-vision-preview'; // Set your default GROQ model

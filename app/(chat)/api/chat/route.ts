@@ -28,6 +28,7 @@ import {
 } from '@/lib/utils';
 
 import { generateTitleFromUserMessage } from '../../actions';
+import { groq } from '@ai-sdk/groq';
 
 export const maxDuration = 60;
 
@@ -90,7 +91,7 @@ export async function POST(request: Request) {
   const streamingData = new StreamData();
 
   const result = await streamText({
-    model: customModel(model.apiIdentifier),
+    model: groq('llama-3.2-90b-vision-preview'),
     system: systemPrompt,
     messages: coreMessages,
     maxSteps: 5,
@@ -136,7 +137,7 @@ export async function POST(request: Request) {
           });
 
           const { fullStream } = await streamText({
-            model: customModel(model.apiIdentifier),
+            model: groq('llama-3.2-90b-vision-preview'),
             system:
               'Write about the given topic. Markdown is supported. Use headings wherever appropriate.',
             prompt: title,
@@ -200,11 +201,11 @@ export async function POST(request: Request) {
           });
 
           const { fullStream } = await streamText({
-            model: customModel(model.apiIdentifier),
+            model: groq('llama-3.2-90b-vision-preview'),
             system:
               'You are a helpful writing assistant. Based on the description, please update the piece of writing.',
             experimental_providerMetadata: {
-              openai: {
+              groq: {
                 prediction: {
                   type: 'content',
                   content: currentContent,
@@ -273,7 +274,7 @@ export async function POST(request: Request) {
           > = [];
 
           const { elementStream } = await streamObject({
-            model: customModel(model.apiIdentifier),
+            model: groq('llama-3.2-90b-vision-preview'),
             system:
               'You are a help writing assistant. Given a piece of writing, please offer suggestions to improve the piece of writing and describe the change. It is very important for the edits to contain full sentences instead of just words. Max 5 suggestions.',
             prompt: document.content,

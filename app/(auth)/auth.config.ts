@@ -37,3 +37,47 @@ export const authConfig = {
     },
   },
 } satisfies NextAuthConfig;
+
+
+
+
+
+
+
+
+
+
+
+// import featureFlags from '../src/config/featureFlags';
+// import type { NextAuthConfig } from 'next-auth';
+
+// export const authConfig = {
+//   pages: {
+//     signIn: featureFlags.authenticationEnabled ? '/login' : '/',
+//     newUser: '/',
+//   },
+//   providers: [
+//     // added later in auth.ts since it requires bcrypt which is only compatible with Node.js
+//     // while this file is also used in non-Node.js environments
+//   ],
+//   callbacks: {
+//     authorized({ auth, request: { nextUrl } }) {
+//       const isLoggedIn = !!auth?.user;
+//       const isOnChat = nextUrl.pathname.startsWith('/');
+
+//       if (!featureFlags.authenticationEnabled) {
+//         return true; // Allow access to all pages if authentication is disabled
+//       }
+
+//       if (isLoggedIn && (nextUrl.pathname.startsWith('/login') || nextUrl.pathname.startsWith('/register'))) {
+//         return Response.redirect(new URL('/', nextUrl as unknown as URL));
+//       }
+
+//       if (isOnChat) {
+//         return isLoggedIn; // Redirect unauthenticated users to login page
+//       }
+
+//       return true; // Allow access to other pages
+//     },
+//   },
+// } satisfies NextAuthConfig;

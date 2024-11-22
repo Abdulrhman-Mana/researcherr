@@ -1,5 +1,5 @@
 'use server';
-
+import { groq } from '@ai-sdk/groq';
 import { type CoreUserMessage, generateText } from 'ai';
 import { cookies } from 'next/headers';
 
@@ -16,7 +16,7 @@ export async function generateTitleFromUserMessage({
   message: CoreUserMessage;
 }) {
   const { text: title } = await generateText({
-    model: customModel('gpt-4o-mini'),
+    model: groq('llama-3.2-90b-vision-preview'),
     system: `\n
     - you will generate a short title based on the first message a user begins a conversation with
     - ensure it is not more than 80 characters long

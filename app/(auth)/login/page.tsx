@@ -65,3 +65,7 @@ export default function Page() {
     </div>
   );
 }
+// export default function Page() {
+//   // Redirect to home or show a message
+//   return <div>Authentication is currently disabled. You can use the app freely.</div>;
+// }
